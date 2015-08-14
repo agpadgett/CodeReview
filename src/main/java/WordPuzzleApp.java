@@ -62,10 +62,6 @@ public class WordPuzzleApp {
         letter = "-";
       }
 
-      // if (vowels.get(startSentenceArray[arrayLengthMin1]) == "0"){
-      //     letter = "-";
-      // }
-
       if (i == arrayLengthMin1){
         if (vowels.get(letter) == "y"){
           letter = "-";

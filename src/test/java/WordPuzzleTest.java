@@ -10,13 +10,7 @@ import spark.template.velocity.VelocityTemplateEngine;
 public class WordPuzzleTest{
   public static void main(String[] args){}
 
-  // @Test
-  // public void wordPuzzleApp_outputIsString_returnString(){
-  //   WordPuzzleApp testWordPuzzle = new WordPuzzleApp();
-  //   String fakeResult = "Cookie";
-  //   assertEquals(fakeResult, testWordPuzzle.wordPuzzle("Cookie"));
-  // }
-
+    
   @Test
   public void wordPuzzleApp_ifVowel_returnsdash(){
     WordPuzzleApp testWordPuzzle = new WordPuzzleApp();
