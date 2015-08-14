@@ -38,7 +38,8 @@ public class WordPuzzleApp {
   public static String wordPuzzle(String startSentence){
 
   String [] startSentenceArray = startSentence.split("");
-  Integer startStentenceLength = startSentence.length();
+  Integer arrayLength = startSentenceArray.length;
+  Integer arrayLengthMin1 = arrayLength - 1;
 
   HashMap<String, String>  vowels = new HashMap<String, String>();
   vowels.put("a", "-");
@@ -51,17 +52,31 @@ public class WordPuzzleApp {
   vowels.put("I", "-");
   vowels.put("O", "-");
   vowels.put("U", "-");
+  vowels.put("y", "y");
+  vowels.put("Y", "y");
   String resultSentence = "";
 
-  for (int i=0; i<startStentenceLength; i++){
+  for (int i=0; i<arrayLength; i++){
     String letter = startSentenceArray[i];
       if(vowels.get(letter) == "-"){
         letter = "-";
+      }
+
+      // if (vowels.get(startSentenceArray[arrayLengthMin1]) == "0"){
+      //     letter = "-";
+      // }
+
+      if (i == arrayLengthMin1){
+        if (vowels.get(letter) == "y"){
+          letter = "-";
+        }
       }
        resultSentence = resultSentence + letter;
    }
 
   return resultSentence;
+
+
 }
 
 
