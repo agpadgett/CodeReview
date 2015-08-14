@@ -1,4 +1,3 @@
-//import java.util.Random;
 import java.util.Map;
 import java.util.HashMap;
 import spark.ModelAndView;
@@ -10,7 +9,7 @@ public class WordPuzzleApp {
   public static void main(String[] args){
 
   staticFileLocation("/public");
-  String layout = "templates/layout.vtl"; /*locate layout file */
+  String layout = "templates/layout.vtl";
 
   get("/", (request, response) -> {
     Map<String, Object> model = new HashMap<String, Object>();
@@ -23,11 +22,11 @@ public class WordPuzzleApp {
     Map<String, Object> model = new HashMap<String,Object>();
     model.put("template", "templates/results.vtl");
 
-    String userInput = request.queryParams("userinput"); /*grabs whatever you typed in as $userinput*/
+    String userInput = request.queryParams("userinput");
 
     String output = wordPuzzle(userInput);
 
-    model.put("result", output); /*sticks your calculated output where it says "$result" on the /results page*/
+    model.put("result", output);
     return new ModelAndView(model,layout);
   }, new VelocityTemplateEngine());
 
@@ -54,27 +53,33 @@ public class WordPuzzleApp {
   vowels.put("U", "-");
   vowels.put("y", "y");
   vowels.put("Y", "y");
+  vowels.put(" ", "a");
   String resultSentence = "";
 
   for (int i=0; i<arrayLength; i++){
-   String letter = startSentenceArray[i];
-     if(vowels.get(letter) == "-"){
-       letter = "-";
-     }
+    String letter = startSentenceArray[i];
 
-     if (i == arrayLengthMin1){
-       if (vowels.get(letter) == "y"){
-         letter = "-";
-       }
-     }
-      resultSentence = resultSentence + letter;
-  }
+      if(vowels.get(letter) == "-"){
+        letter = "-";
+      } else if( i < arrayLengthMin1){
+        if(vowels.get(letter) == "y" && vowels.get(startSentenceArray[i+1]) =="a"){
+          letter = "-";
+        }
+      }
 
- return resultSentence;
+      if (i == arrayLengthMin1){
+        if (vowels.get(letter) == "y"){
+          letter = "-";
+        }
+      }
+    resultSentence = resultSentence + letter;
+   }
+
+  return resultSentence;
 
 
 
-}
+ }
 
 
 }

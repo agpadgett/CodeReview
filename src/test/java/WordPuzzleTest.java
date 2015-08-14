@@ -19,7 +19,7 @@ public class WordPuzzleTest{
   }
 
   @Test
-  public void wordPuzzleApp_ifCapital_returnsdahs(){
+  public void wordPuzzleApp_ifCapitalVowel_returnsdahs(){
     WordPuzzleApp testWordPuzzle = new WordPuzzleApp();
     String fakeResult = "C--K--";
     assertEquals(fakeResult, testWordPuzzle.wordPuzzle("COOKIE"));
@@ -39,11 +39,11 @@ public class WordPuzzleTest{
     assertEquals(fakeResult, testWordPuzzle.wordPuzzle("cookiYY"));
   }
 
-  // @Test
-  // public void wordPuzzleApp_ifMultiWordEntry_returnsdash(){
-  //   WordPuzzleApp testWordPuzzle = new WordPuzzleApp();
-  //   String fakeResult = "c--k-Y- m-";
-  //   assertEquals(fakeResult, testWordPuzzle.wordPuzzle("cookiYY my"));
-  // }
+  @Test
+  public void wordPuzzleApp_ifMultiWordEntryWhereYIsVowel_returnsdash(){
+    WordPuzzleApp testWordPuzzle = new WordPuzzleApp();
+    String fakeResult = "c--k-Y- m-";
+    assertEquals(fakeResult, testWordPuzzle.wordPuzzle("cookiYY my"));
+  }
 
 }
