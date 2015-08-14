@@ -10,7 +10,7 @@ import spark.template.velocity.VelocityTemplateEngine;
 public class WordPuzzleTest{
   public static void main(String[] args){}
 
-    
+
   @Test
   public void wordPuzzleApp_ifVowel_returnsdash(){
     WordPuzzleApp testWordPuzzle = new WordPuzzleApp();
@@ -39,5 +39,11 @@ public class WordPuzzleTest{
     assertEquals(fakeResult, testWordPuzzle.wordPuzzle("cookiYY"));
   }
 
+  // @Test
+  // public void wordPuzzleApp_ifMultiWordEntry_returnsdash(){
+  //   WordPuzzleApp testWordPuzzle = new WordPuzzleApp();
+  //   String fakeResult = "c--k-Y- m-";
+  //   assertEquals(fakeResult, testWordPuzzle.wordPuzzle("cookiYY my"));
+  // }
 
 }
