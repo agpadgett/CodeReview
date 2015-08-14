@@ -42,8 +42,8 @@ public class WordPuzzleTest{
   @Test
   public void wordPuzzleApp_ifMultiWordEntryWhereYIsVowel_returnsdash(){
     WordPuzzleApp testWordPuzzle = new WordPuzzleApp();
-    String fakeResult = "c--k-Y- m-";
-    assertEquals(fakeResult, testWordPuzzle.wordPuzzle("cookiYY my"));
+    String fakeResult = "c--k-Y- m-'s";
+    assertEquals(fakeResult, testWordPuzzle.wordPuzzle("cookiYY my's"));
   }
 
 }

@@ -23,7 +23,6 @@ public class WordPuzzleApp {
     model.put("template", "templates/results.vtl");
 
     String userInput = request.queryParams("userinput");
-
     String output = wordPuzzle(userInput);
 
     model.put("result", output);
@@ -36,33 +35,40 @@ public class WordPuzzleApp {
 
   public static String wordPuzzle(String startSentence){
 
-  String [] startSentenceArray = startSentence.split("");
-  Integer arrayLength = startSentenceArray.length;
+  String [] wordArray = startSentence.split("");
+  Integer arrayLength = wordArray.length;
   Integer arrayLengthMin1 = arrayLength - 1;
 
   HashMap<String, String>  vowels = new HashMap<String, String>();
-  vowels.put("a", "-");
-  vowels.put("e", "-");
-  vowels.put("i", "-");
-  vowels.put("o", "-");
-  vowels.put("u", "-");
-  vowels.put("A", "-");
-  vowels.put("E", "-");
-  vowels.put("I", "-");
-  vowels.put("O", "-");
-  vowels.put("U", "-");
+  vowels.put("a", "vowel");
+  vowels.put("e", "vowel");
+  vowels.put("i", "vowel");
+  vowels.put("o", "vowel");
+  vowels.put("u", "vowel");
+  vowels.put("A", "vowel");
+  vowels.put("E", "vowel");
+  vowels.put("I", "vowel");
+  vowels.put("O", "vowel");
+  vowels.put("U", "vowel");
   vowels.put("y", "y");
   vowels.put("Y", "y");
-  vowels.put(" ", "a");
+  vowels.put(" ", "end");
+  vowels.put("!", "end");
+  vowels.put(".", "end");
+  vowels.put("?", "end");
+  vowels.put(":", "end");
+  vowels.put(";", "end");
+  vowels.put("/", "end");
+  vowels.put("'", "end");
   String resultSentence = "";
 
   for (int i=0; i<arrayLength; i++){
-    String letter = startSentenceArray[i];
+    String letter = wordArray[i];
 
-      if(vowels.get(letter) == "-"){
+      if(vowels.get(letter) == "vowel"){
         letter = "-";
       } else if( i < arrayLengthMin1){
-        if(vowels.get(letter) == "y" && vowels.get(startSentenceArray[i+1]) =="a"){
+        if(vowels.get(letter) == "y" && vowels.get(wordArray[i+1]) =="end"){
           letter = "-";
         }
       }
